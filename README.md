@@ -79,6 +79,7 @@ bun run build && bun run start
 | `BROWSER_SECRET` | The Agent Foundry Browser secret | ✅ |
 | `ANTHROPIC_API_KEY` | The Anthropic API key | ✅ |
 
+
 ## License
 
 [MIT](/LICENSE.md)
