@@ -1,7 +1,7 @@
 # Agent Foundry
 
 ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fagent-foundry.appledore.dev%2Fapi%2Fping&query=status&label=server%20status&color=%2325c2a0)
-
+[![build](https://github.com/chris9753/agent-foundry/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/chris9753/agent-foundry/actions/workflows/build.yml)
 
 An agent studio platform that utilizes Claude models to generate a specific agent for a particular task.
 
