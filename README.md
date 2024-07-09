@@ -17,8 +17,8 @@ Live demo: [agent-foundry.appledore.dev](https://agent-foundry.appledore.dev)
 - [x] Publish your generated agents
 - [x] Install agents from the Store
 - [x] Review submissions
+- [-] Stream mode
 - [ ] Advanced mode Studio
-- [ ] Stream mode
 - [ ] Pagination, lol
 
 ## Requirements
