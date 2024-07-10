@@ -6,9 +6,17 @@
 
 An agent studio platform that utilizes Claude models to generate a specific agent for a particular task.
 
+Live demo: [agent-foundry.appledore.dev](https://agent-foundry.appledore.dev)
+
 ![ss](/public/img1.png)
 
-Live demo: [agent-foundry.appledore.dev](https://agent-foundry.appledore.dev)
+
+
+
+
+
+
+
 
 ## Features
 
