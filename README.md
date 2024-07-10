@@ -25,8 +25,6 @@ Live demo: [agent-foundry.appledore.dev](https://agent-foundry.appledore.dev)
 
 - [agentify-browser](https://github.com/chris9753/agent-foundry-browser)
 - [PostgreSQL](https://www.postgresql.org)
-- [Prisma](https://prisma.io)
-- [Next.js](https://nextjs.org)
 - [bun](https://bun.sh) (recommended)
 
 ## Installation and Setup
