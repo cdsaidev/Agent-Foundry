@@ -28,6 +28,7 @@ Live demo: [agent-foundry.appledore.dev](https://agent-foundry.appledore.dev)
 - [x] Stream mode
 - [ ] Isolated script execution
 - [ ] Advanced mode Studio
+- [ ] Chat with multiple agents
 - [ ] Pagination, lol
 
 ## Requirements
