@@ -24,7 +24,7 @@ Live demo: [agent-foundry.appledore.dev](https://agent-foundry.appledore.dev)
 
 ## Requirements
 
-- [agentify-browser](https://github.com/chris9753/agent-foundry-browser)
+
 - [PostgreSQL](https://www.postgresql.org)
 - [bun](https://bun.sh) (recommended)
 
@@ -67,6 +67,9 @@ bun run build && bun run start
 
 ## Environment Variables
 
+<!-- SCRIPT_URL=
+SCRIPT_SECRET="xxx" -->
+
 | Variable | Description | Required |
 | --- | --- | --- |
 | `NODE_ENV` | The environment mode | ✅ |
@@ -80,6 +83,8 @@ bun run build && bun run start
 | `GOOGLE_SEARCH_CX` | The Google Search CX | ✅ |
 | `BROWSER_URL` | The Agent Foundry Browser URL | ✅ |
 | `BROWSER_SECRET` | The Agent Foundry Browser secret | ✅ |
+| `SCRIPT_URL` | The Agent Foundry Script Runner URL | ✅ |
+| `SCRIPT_SECRET` | The Agent Foundry Script Runner secret | ✅ |
 | `ANTHROPIC_API_KEY` | The Anthropic API key | ✅ |
 
 
