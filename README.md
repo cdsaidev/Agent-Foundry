@@ -1,3 +1,5 @@
+[![vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com/?utm_source=appledore-dev&utm_campaign=oss)
+
 # Agent Foundry
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -75,9 +77,6 @@ bun run build && bun run start
 ```
 
 ## Environment Variables
-
-<!-- SCRIPT_URL=
-SCRIPT_SECRET="xxx" -->
 
 | Variable | Description | Required |
 | --- | --- | --- |
