@@ -1,103 +1,131 @@
-<!-- [![vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com/?utm_source=appledore-dev&utm_campaign=oss) -->
+```
+   ╭────────────────────────────────────────────╮
+   │              Agent Foundry                 │
+   │   Task-native assistants you ship & share  │
+   ╰────────────────────────────────────────────╯
+```
 
 # Agent Foundry
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![server status](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fagent-foundry.appledore.dev%2Fapi%2Fping&query=status&label=server%20status)
-
-
-An agent studio platform that utilizes Claude models to generate a specific agent for a particular task.
-
-Live demo: [agent-foundry.appledore.dev](https://agent-foundry.appledore.dev)
+> **One line:** Build focused automations with Claude, list them in a store, install what others publish, and review incoming submissions—with streaming generation along the way.
 
 ![ss](/public/img1.png)
 
+---
 
+### Contents
 
+1. [Why this exists](#why-this-exists)
+2. [What you can do today](#what-you-can-do-today)
+3. [What is still rough](#what-is-still-rough)
+4. [Stack assumptions](#stack-assumptions)
+5. [First run](#first-run)
+6. [Scripts you will actually use](#scripts-you-will-actually-use)
+7. [Configuration surface](#configuration-surface)
+8. [License](#license)
 
+---
 
+### Why this exists
 
+Most “assistant” products optimize for open-ended chat. **Agent Foundry** optimizes for **narrow jobs**: you describe a task, the model drafts a runnable package of behavior, and the app treats that artifact as something you can version, publish, and reuse—not a one-off reply.
 
+---
 
+### What you can do today
 
-## Features
+| Area | Status |
+|------|--------|
+| Generate task-specific assistants from prompts | Done |
+| Browse a shared catalog (“store”) | Done |
+| Publish your own builds | Done |
+| Install items from the catalog locally | Done |
+| Moderation / review queue for submissions | Done |
+| Token streaming while generating | Done |
 
-- [x] Generate agents
-- [x] Agent Store
-- [x] Publish your generated agents
-- [x] Install agents from the Store
-- [x] Review submissions
-- [x] Stream mode
-- [ ] Isolated script execution
-- [ ] Advanced mode Studio
-- [ ] Chat with multiple agents
-- [ ] Pagination, lol
+---
 
-## Requirements
+### What is still rough
 
+- Sandboxed execution for arbitrary scripts (planned)
+- “Advanced” authoring studio (planned)
+- Multi-assistant chat sessions (planned)
+- Catalog pagination (acknowledged gap)
 
-- [PostgreSQL](https://www.postgresql.org)
-- [bun](https://bun.sh) (recommended)
+---
 
-## Installation and Setup
+### Stack assumptions
 
-1. Clone this repository
-2. Install dependencies
+- **Runtime / package manager:** [Bun](https://bun.sh) is the happy path.
+- **Database:** PostgreSQL, accessed through Prisma migrations.
 
-    ```bash
-    bun install
-    ```
-3. Create a `.env` file and fill it with the required [environment variables](#environment-variables)
+If you prefer another JS runtime, you are on your own—commands below assume `bun`.
 
-    ```bash
-    cp .env.example .env
-    ```
-4. Create a new database and set the `DATABASE_URL` in the `.env` file
-5. Run the migrations
+---
 
-    ```bash
-    bun prisma migrate deploy && \
-    bun prisma generate
-    ```
+### First run
 
-## Development
+<details>
+<summary><strong>Expand: clone → env → database</strong></summary>
 
-Run the development server
+1. Clone the repository you are reading from.
+2. Install dependencies:
 
-```bash
-bun run dev
-```
+   ```bash
+   bun install
+   ```
 
-## Production
+3. Copy the example environment file and edit values:
 
-Build the project & start the server
+   ```bash
+   cp .env.example .env
+   ```
 
-```bash
-bun run build && bun run start
-```
+4. Create an empty PostgreSQL database and point `DATABASE_URL` at it.
+5. Apply schema and regenerate the Prisma client:
 
-## Environment Variables
+   ```bash
+   bun prisma migrate deploy && bun prisma generate
+   ```
 
-| Variable | Description | Required |
-| --- | --- | --- |
-| `NODE_ENV` | The environment mode | ✅ |
-| `DATABASE_URL` | The database URL | ✅ |
-| `SUPERADMINS` | The superadmins' email | ✅ |
-| `SECRET` | The encryption secret | ✅ |
-| `GOOGLE_CLIENT_ID` | The Google OAuth client ID | ✅ |
-| `GOOGLE_CLIENT_SECRET` | The Google OAuth client secret | ✅ |
-| `GOOGLE_REDIRECT_URI` | The Google OAuth redirect URI | ✅ |
-| `GOOGLE_SEARCH_KEY` | The Google Search API key | ✅ |
-| `GOOGLE_SEARCH_CX` | The Google Search CX | ✅ |
-| `BROWSER_URL` | The Agent Foundry Browser URL | ✅ |
-| `BROWSER_SECRET` | The Agent Foundry Browser secret | ✅ |
-| `SCRIPT_URL` | The Agent Foundry Script Runner URL | ✅ |
-| `SCRIPT_SECRET` | The Agent Foundry Script Runner secret | ✅ |
-| `ANTHROPIC_API_KEY` | The Anthropic API key | ✅ |
+</details>
 
+---
 
-## License
+### Scripts you will actually use
 
-[MIT](/LICENSE.md)
+| Goal | Command |
+|------|---------|
+| Local dev server | `bun run dev` |
+| Production bundle + serve | `bun run build && bun run start` |
 
+---
 
+### Configuration surface
+
+These keys are expected in `.env`. Names are literal; descriptions are purpose-focused.
+
+| Key | Role |
+|-----|------|
+| `NODE_ENV` | `development` vs `production` behavior switches |
+| `DATABASE_URL` | PostgreSQL connection string for Prisma |
+| `SUPERADMINS` | Comma-separated emails with elevated privileges |
+| `SECRET` | Application secret for signing / crypto |
+| `GOOGLE_CLIENT_ID` | OAuth client id |
+| `GOOGLE_CLIENT_SECRET` | OAuth client secret |
+| `GOOGLE_REDIRECT_URI` | OAuth redirect registered in Google Cloud |
+| `GOOGLE_SEARCH_KEY` | Programmatic web search credential |
+| `GOOGLE_SEARCH_CX` | Programmatic search engine id (`cx`) |
+| `BROWSER_URL` | Base URL for the headless browser microservice |
+| `BROWSER_SECRET` | Shared secret for that microservice |
+| `SCRIPT_URL` | Base URL for the remote script runner |
+| `SCRIPT_SECRET` | Shared secret for the script runner |
+| `ANTHROPIC_API_KEY` | Claude API access |
+
+> **Tip:** Never commit a populated `.env`. The committed `.env.example` is the contract; your local file is private state.
+
+---
+
+### License
+
+Distributed under the terms in [`LICENSE.md`](LICENSE.md) (MIT).
