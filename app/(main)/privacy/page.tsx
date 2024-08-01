@@ -8,7 +8,7 @@ export default function Terms() {
 
 ## Introduction
 
-At Agent Foundry ([agent-foundry.appledore.dev](https://agent-foundry.appledore.dev)), we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you use our platform to create and install LLM agents that can automate other apps using APIs. By accessing or using Agent Foundry, you agree to the terms of this Privacy Policy.
+At Agent Foundry, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you use our platform to create and install LLM agents that can automate other apps using APIs. By accessing or using Agent Foundry, you agree to the terms of this Privacy Policy.
 
 ## Information We Collect
 
@@ -56,13 +56,11 @@ We may update this Privacy Policy from time to time. We will notify you of any c
 
 ## Contact Us
 
-If you have any questions about this Privacy Policy, please contact us at:
-- Email: chris9753@appledore.dev
-- Direct message: [dm.new/chris9753](https://dm.new/chris9753)
+If you have any questions about this Privacy Policy, please reach out through the project's support channels.
 
 ## Governing Law
 
-This Privacy Policy shall be governed and construed in accordance with the laws of Indonesia, without regard to its conflict of law provisions.
+This Privacy Policy shall be governed and construed in accordance with applicable law, without regard to its conflict of law provisions.
 
 By using Agent Foundry, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy.`} />
   </div>

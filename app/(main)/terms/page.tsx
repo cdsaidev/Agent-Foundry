@@ -8,7 +8,7 @@ export default function Terms() {
 
 ## Introduction
 
-Welcome to Agent Foundry ([agent-foundry.appledore.dev](https://agent-foundry.appledore.dev)). Agent Foundry is a platform that allows you to create and install LLM agents that can automate other apps using APIs. By using our services, you agree to these Terms of Service ("Terms"). Please read them carefully.
+Welcome to Agent Foundry. Agent Foundry is a platform that allows you to create and install LLM agents that can automate other apps using APIs. By using our services, you agree to these Terms of Service ("Terms"). Please read them carefully.
 
 ## Acceptance of Terms
 
@@ -24,7 +24,7 @@ To use Agent Foundry, you will need an API key from Anthropic unless you opt to 
 
 ## Open-Source and Licensing
 
-Agent Foundry is an open-source platform licensed under the MIT License. The source code is available at [github.com/chris9753/agent-foundry](https://github.com/chris9753/agent-foundry).
+Agent Foundry is an open-source platform licensed under the MIT License.
 
 ## Data Privacy and Security
 
@@ -32,7 +32,7 @@ We prioritize the security of your credentials. All credentials are encrypted sa
 
 ## Compliance with Laws
 
-You agree to comply with all applicable laws and regulations, including those of the Indonesian government, while using our services.
+You agree to comply with all applicable laws and regulations while using our services.
 
 ## Changes to Terms
 
@@ -44,13 +44,11 @@ We reserve the right to terminate or suspend your access to our services at any 
 
 ## Contact Information
 
-For support, please contact us at:
-- Email: chris9753@appledore.dev
-- X/Twitter direct message: [dm.new/chris9753](https://dm.new/chris9753)
+For support, please reach out through the project's support channels.
 
 ## Governing Law
 
-These Terms shall be governed and construed in accordance with the laws of Indonesia, without regard to its conflict of law provisions.
+These Terms shall be governed and construed in accordance with applicable law, without regard to its conflict of law provisions.
 
 ## Disclaimer of Warranties
 
