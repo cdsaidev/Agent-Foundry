@@ -10,7 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { hit } from '@/lib/hit'
 import { cn } from '@/lib/utils'
 import { Agent } from '@prisma/client'
-import { LucideArrowRight, LucideBot, LucideGithub, LucideRocket, LucideVideo } from 'lucide-react'
+import { LucideArrowRight, LucideBot, LucideRocket, LucideVideo } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -44,11 +44,6 @@ export default function Home() {
           Create, publish, and install any LLM agent with <strong>Claude 3.5 Sonnet.</strong>
         </p>
         <div className="!mt-8 flex gap-1 items-center justify-center">
-          <Button asChild size="lg" variant="outline">
-            <a href="https://github.com/chris9753/agent-foundry" target="_blank" rel="noopener noreferrer">
-              <LucideGithub className="w-5 h-5" />
-            </a>
-          </Button>
           <Button asChild size="lg">
             <Link href="/auth">
               Get Started

@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/co
 import { useUser } from '@/components/use-user'
 import { hit } from '@/lib/hit'
 import { cn } from '@/lib/utils'
-import { CircleUser, LucideBot, LucideGithub, LucideMoonStar, LucideShoppingBag, LucideSun, LucideTriangleAlert, Menu } from 'lucide-react'
+import { CircleUser, LucideBot, LucideMoonStar, LucideShoppingBag, LucideSun, LucideTriangleAlert, Menu } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -81,11 +81,6 @@ export default function AppLayout({
                 <Button size="icon" variant="ghost" onClick={() => setTheme('light')} className="hidden dark:flex">
                   <LucideSun className="size-4" />
                 </Button>
-                <Button asChild variant="ghost" size="icon">
-                  <a href="https://github.com/chris9753/agent-foundry" target="_blank" rel="noopener noreferrer">
-                    <LucideGithub className="size-4" />
-                  </a>
-                </Button>
               </div>
               <p className="text-xs text-muted-foreground">
                 v0-alpha
@@ -153,11 +148,6 @@ export default function AppLayout({
                     </Button>
                     <Button size="icon" variant="ghost" onClick={() => setTheme('light')} className="hidden dark:flex">
                       <LucideSun className="size-4" />
-                    </Button>
-                    <Button asChild variant="ghost" size="icon">
-                      <a href="https://github.com/chris9753/agent-foundry" target="_blank" rel="noopener noreferrer">
-                        <LucideGithub className="size-4" />
-                      </a>
                     </Button>
                   </div>
                   <p className="text-xs text-muted-foreground">

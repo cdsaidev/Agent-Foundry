@@ -1,6 +1,5 @@
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
-import { LucideGithub, LucideGlobe } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -17,37 +16,6 @@ export default function Footer() {
             <p className="leading-7 text-muted-foreground">
               Create and install AI agents to automate your tasks.
             </p>
-            <div className="flex flex-col gap-4 text-muted-foreground">
-              <div className="flex gap-1.5 items-center">
-                <LucideGithub className="size-4" />
-                <a href="https://github.com/chris9753" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
-                  @chris9753
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col gap-8">
-          <div className="space-y-4">
-            <Label>
-              COMPANY
-            </Label>
-            <div>
-              <p className="leading-7 text-muted-foreground font-medium">
-                Appledore Dev
-              </p>
-              <p className="leading-7 text-muted-foreground">
-                Jakarta, Indonesia
-              </p>
-            </div>
-            <div className="flex flex-col gap-2.5 text-muted-foreground">
-              <div className="flex gap-1.5 items-center">
-                <LucideGlobe className="size-4" />
-                <a href="https://appledore.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
-                  appledore.dev
-                </a>
-              </div>
-            </div>
           </div>
         </div>
         <div className="flex flex-col gap-8">
