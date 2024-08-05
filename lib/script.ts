@@ -1,4 +1,4 @@
-export class Agent FoundryScript {
+export class FoundryScript {
   constructor(private opts: { url: string, secret: string } = {
     url: process.env.SCRIPT_URL || '',
     secret: process.env.SCRIPT_SECRET || ''

@@ -1,4 +1,4 @@
-export class Agent FoundryBrowser {
+export class FoundryBrowser {
   constructor(private opts: { url: string, secret: string } = {
     url: process.env.BROWSER_URL || '',
     secret: process.env.BROWSER_SECRET || ''

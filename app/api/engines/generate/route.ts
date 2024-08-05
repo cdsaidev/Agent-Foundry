@@ -1,5 +1,5 @@
 import { authorization } from '@/app/api/_middlewares/authorization'
-import { Agent FoundryBrowser } from '@/lib/browser'
+import { FoundryBrowser } from '@/lib/browser'
 import { Claude, ClaudeCompletionPayload, ClaudeContent, getAnthropicKey } from '@/lib/claude'
 import { prisma } from '@/lib/db'
 import { Google } from '@/lib/google'
@@ -76,7 +76,7 @@ export const POST = authorization(async (req) => {
         if (content.name === 'open_url') {
           const url = content.input?.url
           const resultType = content.input?.resultType as 'text' | 'image' | 'markdown'
-          const resp = await new Agent FoundryBrowser().openUrl(url, resultType)
+          const resp = await new FoundryBrowser().openUrl(url, resultType)
           console.log(`> open url (${url}): ${resultType}`)
           if (resultType === 'image') {
             const screenshot = resp as ArrayBuffer

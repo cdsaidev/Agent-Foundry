@@ -1,10 +1,10 @@
 import { authorization, ReqWithUser } from '@/app/api/_middlewares/authorization'
-import { Agent FoundryBrowser } from '@/lib/browser'
+import { FoundryBrowser } from '@/lib/browser'
 import { Claude, ClaudeCompletionPayload, ClaudeContent, getAnthropicKey } from '@/lib/claude'
 import { cryptr } from '@/lib/crypto'
 import { prisma } from '@/lib/db'
 import { Google } from '@/lib/google'
-import { Agent FoundryScript } from '@/lib/script'
+import { FoundryScript } from '@/lib/script'
 import { Agent, InstalledAgent } from '@prisma/client'
 import { jsonrepair } from 'jsonrepair'
 import { NextResponse } from 'next/server'
@@ -82,7 +82,7 @@ export const POST = authorization(async (req: ReqWithUser) => {
         if (tool) {
           const input = content.input
           try {
-            const output = await new Agent FoundryScript().run(tool.execute, [input, agent.configs])
+            const output = await new FoundryScript().run(tool.execute, [input, agent.configs])
             // const output = await eval(`(${tool.execute})`)(input, agent.configs)
             console.log(`> running \`${content.name}\` successfully...`)
             contents.push({
@@ -130,7 +130,7 @@ export const POST = authorization(async (req: ReqWithUser) => {
           if (content.name === 'open_url') {
             const url = content.input?.url
             const resultType = content.input?.resultType as 'text' | 'image' | 'markdown'
-            const resp = await new Agent FoundryBrowser().openUrl(url, resultType)
+            const resp = await new FoundryBrowser().openUrl(url, resultType)
             console.log(`> open url (${url}): ${resultType}`)
             if (resultType === 'image') {
               const screenshot = resp as ArrayBuffer
