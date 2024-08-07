@@ -1,5 +1,9 @@
 import { prisma } from '@/lib/db'
-import { NextResponse } from 'next/server'
+
+// Single-user mode: there is no login. Every request runs as one local user,
+// auto-provisioned on first use. Override the identity via env if desired.
+const LOCAL_USER_EMAIL = process.env.LOCAL_USER_EMAIL || 'local@agent-foundry.local'
+const LOCAL_USER_NAME = process.env.LOCAL_USER_NAME || 'Local User'
 
 export type AuthUser = {
   id: string,
@@ -7,23 +11,10 @@ export type AuthUser = {
   name?: string | null,
   credits: number,
   isSuperAdmin?: boolean,
-  profile: {
-    iss: string
-    azp: string
-    aud: string
-    sub: string
+  profile?: {
     email: string
-    email_verified: string
-    at_hash: string
     name: string
-    picture: string
-    given_name: string
-    family_name: string
-    iat: string
-    exp: string
-    alg: string
-    kid: string
-    typ: string
+    picture?: string
   }
 }
 
@@ -31,73 +22,37 @@ export type ReqWithUser = Request & {
   user: AuthUser
 }
 
+const getLocalUser = async (): Promise<AuthUser> => {
+  const user = await prisma.user.upsert({
+    select: {
+      id: true,
+      email: true,
+      name: true,
+      credits: true
+    },
+    where: {
+      email: LOCAL_USER_EMAIL
+    },
+    update: {},
+    create: {
+      email: LOCAL_USER_EMAIL,
+      name: LOCAL_USER_NAME
+    }
+  })
+
+  return {
+    ...user,
+    isSuperAdmin: true,
+    profile: {
+      email: user.email,
+      name: user.name || LOCAL_USER_NAME
+    }
+  }
+}
+
 export const authorization = (handler: (req: ReqWithUser, params?: any) => void | Promise<void> | Response | Promise<Response>) => {
   return async (req: ReqWithUser, params?: any) => {
-    const cookies = req.headers.get('cookie')?.split(';').map(cookie => cookie.trim().split('='))
-    const token = req.headers.get('authorization')?.replace('Bearer ', '') || cookies?.find(cookie => cookie[0] === 'access_token')?.[1]
-    if (!token)  {
-      return NextResponse.json({
-        error: 'Unauthorized'
-      }, {
-        status: 401,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-    }
-
-    try {
-      const profile = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${token}`)
-      if (!profile.ok) {
-        return NextResponse.json({
-          error: 'Unauthorized'
-        }, {
-          status: 401,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-      }
-
-      const json = await profile.json() as ReqWithUser['user']['profile']
-      const user = await prisma.user.findUnique({
-        select: {
-          id: true,
-          email: true,
-          name: true,
-          credits: true
-        },
-        where: {
-          email: json.email
-        }
-      })
-      if (!user) {
-        return NextResponse.json({
-          error: 'Unauthorized'
-        }, {
-          status: 401,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-      }
-
-      req.user = {
-        ...user,
-        isSuperAdmin: (process.env.SUPERADMINS || '').split(',').includes(user.email),
-        profile: json
-      }
-    } catch (error) {
-      return NextResponse.json({
-        error: 'Unauthorized'
-      }, {
-        status: 401,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-    }
-
+    req.user = await getLocalUser()
     return await handler(req, params)
   }
 }
