@@ -134,11 +134,9 @@ export default function Header() {
 
         <div className="flex gap-2 items-center">
           {user !== undefined ? <Button asChild>
-            {user ? <Link href="/app">
+            <Link href="/app">
               My Agents
-            </Link> : <Link href="/auth">
-              Login
-            </Link>}
+            </Link>
           </Button> : <></>}
           <Button size="icon" variant="ghost" onClick={() => setTheme('dark')} className="dark:hidden flex">
             <LucideMoonStar className="size-4" />

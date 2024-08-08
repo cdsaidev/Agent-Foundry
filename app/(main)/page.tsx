@@ -45,7 +45,7 @@ export default function Home() {
         </p>
         <div className="!mt-8 flex gap-1 items-center justify-center">
           <Button asChild size="lg">
-            <Link href="/auth">
+            <Link href="/app">
               Get Started
               <LucideArrowRight className="w-5 h-5 ml-2" />
             </Link>
@@ -189,7 +189,7 @@ export default function Home() {
 
     <div className="container mx-auto pt-[10svh] text-center">
       <Button asChild size="lg" variant="default">
-        <Link href="/auth">
+        <Link href="/app">
           Create Your First Agent
           <LucideRocket className="w-5 h-5 ml-2" />
         </Link>

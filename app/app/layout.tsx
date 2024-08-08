@@ -5,31 +5,23 @@ import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { useUser } from '@/components/use-user'
-import { hit } from '@/lib/hit'
 import { cn } from '@/lib/utils'
 import { CircleUser, LucideBot, LucideMoonStar, LucideShoppingBag, LucideSun, LucideTriangleAlert, Menu } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
-import { Suspense, useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { Suspense, useState } from 'react'
 
 export default function AppLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const { user, fetchUser } = useUser()
+  const { user } = useUser()
   const { setTheme } = useTheme()
-  const r = useRouter()
   const p = usePathname()
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    if (user === null) {
-      r.replace('/auth')
-    }
-  }, [user, r])
 
   return <Suspense>
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -162,7 +154,7 @@ export default function AppLayout({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">
-                {user?.profile.picture ? <Image src={user.profile.picture} alt={user?.name!} width={96} height={96} className="h-7 w-7 rounded-full" /> : <CircleUser className="h-5 w-5" />}
+                {user?.profile?.picture ? <Image src={user.profile.picture} alt={user?.name!} width={96} height={96} className="h-7 w-7 rounded-full" /> : <CircleUser className="h-5 w-5" />}
                 <span className="sr-only">Toggle user menu</span>
               </Button>
             </DropdownMenuTrigger>
@@ -175,17 +167,6 @@ export default function AppLayout({
               {user?.isSuperAdmin ? <DropdownMenuItem className="hover:cursor-pointer" asChild>
                 <Link href="/app/admin">Admin Panel</Link>
               </DropdownMenuItem> : <></>}
-              <DropdownMenuItem className="hover:cursor-pointer !text-red-500" onClick={async () => {
-                await hit('/api/auth/destroy', {
-                  method: 'DELETE',
-                })
-                if (window) {
-                  localStorage.removeItem('refresh_token')
-                }
-                fetchUser()
-              }}>
-                Logout
-              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
