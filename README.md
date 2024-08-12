@@ -9,8 +9,6 @@
 
 > **One line:** Build focused automations with Claude, list them in a store, install what others publish, and review incoming submissions—with streaming generation along the way.
 
-![ss](/public/img1.png)
-
 ---
 
 ### Contents
