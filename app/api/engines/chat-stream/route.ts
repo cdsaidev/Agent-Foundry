@@ -277,3 +277,5 @@ ${agent.agent.system}` : ''}` : undefined,
     }
   })
 })
+
+export const dynamic = 'force-dynamic'

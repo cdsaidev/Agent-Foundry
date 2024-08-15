@@ -27,3 +27,5 @@ export const GET = authorization(async (req: ReqWithUser) => {
     }
   })
 })
+
+export const dynamic = 'force-dynamic'

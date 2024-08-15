@@ -271,3 +271,5 @@ ${agent.agent.system}` : ''}` : undefined,
     messages: body.messages
    })
 })
+
+export const dynamic = 'force-dynamic'

@@ -40,3 +40,5 @@ export const GET = authorization(async (req) => {
 
   return NextResponse.json(data)
 })
+
+export const dynamic = 'force-dynamic'

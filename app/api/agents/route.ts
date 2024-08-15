@@ -55,3 +55,5 @@ export const POST = authorization(async (req) => {
 
   return NextResponse.json({})
 })
+
+export const dynamic = 'force-dynamic'

@@ -38,3 +38,5 @@ export const POST = authorization(async (req: ReqWithUser) => {
     status: 201,
   })
 })
+
+export const dynamic = 'force-dynamic'

@@ -50,3 +50,5 @@ export const DELETE = authorization(async (req: ReqWithUser, { params }: { param
 
   return NextResponse.json({})
 })
+
+export const dynamic = 'force-dynamic'

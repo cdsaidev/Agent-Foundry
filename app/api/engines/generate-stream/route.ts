@@ -274,3 +274,5 @@ Please utilize the provided tools to generate a valid list of tools that can be 
     }
   })
 })
+
+export const dynamic = 'force-dynamic'

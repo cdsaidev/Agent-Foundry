@@ -22,3 +22,5 @@ export const PATCH = authorization(async (req, { params }: { params: { id: strin
 
   return NextResponse.json({})
 })
+
+export const dynamic = 'force-dynamic'
